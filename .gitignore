@@ -1,0 +1,17 @@
+# The library itself (books and covers) stays out of the repository;
+# sample/library.php is there to try the shelf with.
+data/*
+!data/.htaccess
+
+# Images (the site icons).
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+
+# Leftovers from macOS and editors.
+.DS_Store
+.vscode/
+*.tmp

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saeed's Archive</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.ico?v=2" sizes="16x16 32x32 48x48">
+<link rel="icon" href="icon-32.png?v=2" type="image/png" sizes="32x32">
+<link rel="icon" href="icon-192.png?v=2" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="stylesheet" href="styles.css?v=1">
+<script src="app.js?v=1" defer></script>
+<script src="home.js?v=1" defer></script>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<header class="bar rise">
+  <span class="label">Saeed's archive</span>
+  <div class="tools">
+    <input id="q" type="search" placeholder="What are you looking for?" aria-label="Search the archive">
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p id="stats" class="label rise" aria-live="polite"></p>
+    <h1 class="welcome" aria-label="Welcome to my archive.">
+      <span class="ghost" aria-hidden="true">Welcome to my <em>archive</em>.</span>
+      <span id="typed" class="typed" aria-hidden="true"></span>
+    </h1>
+    <p class="sub rise">Books I have read, and pages I have written.</p>
+  </section>
+
+  <nav id="chips" class="chips rise" aria-label="Genres"></nav>
+
+  <section id="rail" class="rail rise" aria-label="The shelf">
+    <div id="track" class="track"></div>
+    <div class="ledge" aria-hidden="true"></div>
+  </section>
+
+  <section id="reading" class="reading rise" aria-labelledby="reading-title" hidden>
+    <h2 id="reading-title" class="label">Currently reading</h2>
+    <div id="reading-track" class="reading-track"></div>
+  </section>
+
+</main>
+
+<footer class="foot label rise">by <a href="https://saeedzafar.se">saeedzafar.se</a></footer>
+
+<div id="card" class="card" aria-hidden="true"></div>
+
+<dialog id="detail"></dialog>
+
+</body>
+</html>

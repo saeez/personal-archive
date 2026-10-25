@@ -1,0 +1,3 @@
+# Nothing in here is ever served directly: the books and the covers only
+# leave through api/library.php, which leaves out anything private.
+Require all denied

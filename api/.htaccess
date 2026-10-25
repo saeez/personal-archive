@@ -1,0 +1,11 @@
+# library.php is the only thing in here anyone may request.
+
+Options -Indexes
+
+<FilesMatch ".">
+  Require all denied
+</FilesMatch>
+
+<Files "library.php">
+  Require all granted
+</Files>

@@ -1,0 +1,42 @@
+# Apache settings (mod_rewrite and mod_headers).
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Always HTTPS.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# Only the site's own files can be fetched. Everything else that may end up
+# on the server (data, tests, backups, README) answers 403.
+# api/ opens just library.php again in its own .htaccess.
+<FilesMatch ".">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^(index\.html|styles\.css|(app|home)\.js|robots\.txt|favicon\.ico|icon-(32|192)\.png|apple-touch-icon\.png|[a-z-]+\.woff2)$">
+  Require all granted
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  # No inline script or style anywhere, so nothing in a title or a remark can
+  # ever run as code. Fonts are the site's own, and nothing may be framed.
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "no-referrer"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  # Not for search engines.
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+  Header always unset X-Powered-By
+  # Always check for a newer copy of the page, its styles and its scripts.
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
